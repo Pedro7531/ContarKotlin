@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults.buttonColors
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -45,13 +46,15 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(modifier: Modifier = Modifier) {
-    var count: Int by remember { mutableStateOf<Int>(0)
+    var count: Int by remember {
+        mutableStateOf<Int>(0)
     };
 
-    Column (modifier = Modifier
-        .fillMaxSize()
-        .padding(16.dp)
-        .background(Color.White),
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+            .background(Color.White),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -62,15 +65,24 @@ fun Greeting(modifier: Modifier = Modifier) {
                 .align(Alignment.CenterHorizontally),
             color = Color.Blue,
             fontFamily = FontFamily.SansSerif,
-            fontSize = 60.sp,
+            fontSize = 80.sp,
         )
-    Button(
-        onClick = { count++ },
-        modifier = Modifier
-            .padding(25.dp)
-            .fillMaxWidth()
+        Button(
+            onClick = { count++ },
+            modifier = Modifier
+                .padding(25.dp)
+                .fillMaxWidth()
         ) {
             Text(text = "Contar", fontSize = 30.sp)
+        }
+        Button(
+            onClick = { count = 0 },
+            modifier = Modifier
+                .padding(25.dp)
+                .fillMaxWidth(),
+            colors = buttonColors(Color.Red)
+            ) {
+            Text(text = "Zerar", fontSize = 30.sp)
         }
     }
 }
